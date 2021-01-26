@@ -15,6 +15,6 @@ class Detect_cars:
             image_path=self.detector.detectObjectsFromImage(custom_objects=self.cust,display_percentage_probability=False,display_object_name=False,input_image=self.footage,input_type="array",output_image_path="image.jpg")
             image=cv2.imread("image.jpg")
             cv2.imshow(name,image)
-            cv2.waitKey(1000)
+            cv2.waitKey(12)
             return len(image_path)
 
