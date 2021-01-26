@@ -12,17 +12,20 @@ class Detect_cars:
         self.cust=self.detector.CustomObjects(car=True,motorcycle=True,truck=True)
         self.detector.loadModel()
 
-    def detect(self):
-        while True:
+    def detect(self,name):
+        i=0
+        while i==0:
             suc,frame=self.footage.read()
+            if i%10==0:
+                image_path=self.detector.detectObjectsFromImage(custom_objects=self.cust,display_percentage_probability=False,display_object_name=False,input_image=frame,input_type="array",output_image_path="image.jpg")
+                print(len(image_path))
+                image=cv2.imread("image.jpg")
+                cv2.imshow(name,image)
+                k = cv2.waitKey(1) & 0xFF
+                # press 'q' to exit
+                if k == ord('q'):
+                    break
+            else:
+                cv2.imshow(name,frame)
+            i=i+1
 
-            image_path=self.detector.detectObjectsFromImage(custom_objects=self.cust,display_percentage_probability=False,display_object_name=False,input_image=frame,input_type="array",output_image_path="image.jpg")
-            print(len(image_path))
-            image=cv2.imread("image.jpg")
-            cv2.imshow("image",image)
-            k = cv2.waitKey(1) & 0xFF
-            # press 'q' to exit
-            if k == ord('q'):
-                break
-obj=Detect_cars()
-obj.detect()
