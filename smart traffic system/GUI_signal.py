@@ -23,3 +23,5 @@ class GUI_signal:
         self.create_circle(82, 82, 80, self.myCanvas_1, fst)
         self.create_circle(82, 82, 80, self.myCanvas_2, snd)
         self.create_circle(82, 82, 80, self.myCanvas_3, trd)
+    def change_in_pattern(self):
+        pass
