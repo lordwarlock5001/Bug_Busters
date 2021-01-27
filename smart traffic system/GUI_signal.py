@@ -61,8 +61,13 @@ class GUI_signal:
         while s <= 20:
             time.sleep(1)
             s += 1
-        self.change_state("red", "grey", "grey")
+        self.change_state("grey", "yellow", "grey")
         s = 0
+        while s <= 5:
+            time.sleep(1)
+            s += 1
+        self.change_state("red", "grey", "grey")
+        s = 5
         while s <= 5:
             time.sleep(1)
             s += 1
