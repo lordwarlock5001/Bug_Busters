@@ -1,7 +1,6 @@
 import tkinter as tk
 import time
 import threading
-import _thread
 class GUI_signal:
     def __init__(self,name):
         self.root = tk.Tk()

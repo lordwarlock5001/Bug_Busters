@@ -1,4 +1,3 @@
-import numpy as np
 from detect_cars import Detect_cars
 import GUI_signal as gs
 import threading
@@ -6,6 +5,8 @@ import time
 o1 = Detect_cars(name="left.PNG")
 o2 = Detect_cars(name="right.PNG")
 o3 = Detect_cars(name="front.PNG")
+
+
 def patttern(dic):
     k=0
     j=0
