@@ -3,17 +3,19 @@ import time
 import threading
 import _thread
 class GUI_signal:
-    def __init__(self):
+    def __init__(self,name):
         self.root = tk.Tk()
         self.seco=0
+        self.label_name=tk.Label(self.root,text=name)
+        self.label_name.grid(row=1,column=1)
         self.label_timer=tk.Label(self.root,text="00",font=("",50),fg="#009933")
-        self.label_timer.grid(row=1,column=1)
+        self.label_timer.grid(row=2,column=1)
         self.myCanvas_1 = tk.Canvas(self.root,width=102,height=102)
-        self.myCanvas_1.grid(row=2, column=1)
+        self.myCanvas_1.grid(row=3, column=1)
         self.myCanvas_2 = tk.Canvas(self.root,width=102,height=102)
-        self.myCanvas_2.grid(row=3, column=1)
+        self.myCanvas_2.grid(row=4, column=1)
         self.myCanvas_3 = tk.Canvas(self.root,width=102,height=102)
-        self.myCanvas_3.grid(row=4, column=1)
+        self.myCanvas_3.grid(row=5, column=1)
     def timer(self,sec):
         s=0
         self.change_state("red","grey","grey")
@@ -28,6 +30,11 @@ class GUI_signal:
             time.sleep(1)
             s += 1
         self.change_state("grey","grey","green")
+        s=0
+        while s<=20:
+            time.sleep(1)
+            s += 1
+        self.root.destroy()
     def create_circle(self,x, y, r, canvasName, color):
         x0 = x - r
         y0 = y - r
@@ -49,10 +56,27 @@ class GUI_signal:
         pass
     def __del__(self):
         self.root.destroy()
-def start_main():
-    obj=GUI_signal()
+    def green_red(self):
+        s = 0
+        while s <= 20:
+            time.sleep(1)
+            s += 1
+        self.change_state("red", "grey", "grey")
+        s = 0
+        while s <= 5:
+            time.sleep(1)
+            s += 1
+        self.root.destroy()
+def start_main(sec,name):
+    obj=GUI_signal(name)
     obj.start_()
-    t1=threading.Thread(target=obj.timer,name="t1",args=(60,),daemon=True)
-    t1.start()
+    if sec==0:
+        obj.change_state("grey","grey","green")
+        t1 = threading.Thread(target=obj.green_red, name="t1", daemon=True)
+        t1.start()
+    else:
+        t1=threading.Thread(target=obj.timer,name="t1",args=(sec,),daemon=True)
+        t1.start()
     obj.start_loop()
+
 
