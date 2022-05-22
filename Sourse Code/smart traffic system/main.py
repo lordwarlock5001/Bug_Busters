@@ -1,14 +1,11 @@
 from detect_cars import Detect_cars
 import GUI_signal as gs
 import threading
-import socket_ma
 import time
 o1 = Detect_cars(name="left.PNG")
 o2 = Detect_cars(name="right.PNG")
 o3 = Detect_cars(name="front.PNG")
 sp=[0,20,50]
-so=threading.Thread(target=socket_ma.call_s,daemon=True)
-so.start()
 def patttern(dic):
     k=0
     j=0

@@ -9,7 +9,7 @@ class Detect_cars:
         self.detector.setModelTypeAsYOLOv3()
         self.detector.setModelPath(os.path.join(self.curD,"yolo.h5"))
         self.cust=self.detector.CustomObjects(car=True,motorcycle=True,truck=True)
-        self.detector.loadModel()
+        self.detector.loadModel() 
 
     def detect(self,name):
         image_path=self.detector.detectObjectsFromImage(custom_objects=self.cust,display_percentage_probability=False,display_object_name=False,input_image=self.footage,input_type="array",output_image_path="image.jpg")
